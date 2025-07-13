@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular - Enfermería</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffd6ec, #e0b3ff);
+      color: #4a004a;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .semestre {
+      background-color: #fff0f6;
+      border: 2px solid #eeb4dc;
+      border-radius: 15px;
+      width: 300px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .semestre h3 {
+      margin-bottom: 10px;
+    }
+    .materia {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ffe6f2;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .materia:hover {
+      background-color: #f2c9e0;
+    }
+    .materia input {
+      margin-right: 10px;
+    }
+    #total {
+      font-size: 18px;
+      margin-top: 20px;
+      background-color: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+      border: 2px solid #cc66cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular - Enfermería 💖🩺</h1>
+  <div class="contenedor" id="malla"></div>
+  <div id="total">Créditos completados: 0</div>
+
+  <script>
+    const data = [
+      {
+        semestre: '1er Semestre',
+        materias: [
+          ['Biología 1', 3],
+          ['Competencias comunicativas 1', 4],
+          ['Competencias lógico matemáticas', 3],
+          ['General English 1', 2],
+          ['Introducción a la carrera', 1],
+          ['Región y contexto Caribe', 2],
+          ['Salud y desarrollo humano', 2]
+        ]
+      },
+      {
+        semestre: '2do Semestre',
+        materias: [
+          ['Biofísica', 3],
+          ['Biología 2', 3],
+          ['Bioquímica', 4],
+          ['General English 2', 2],
+          ['Seminario de enfermería', 3],
+          ['Teoría y filosofía del conocimiento', 2]
+        ]
+      },
+      {
+        semestre: '3er Semestre',
+        materias: [
+          ['Enfermería en salud mental', 6],
+          ['General English 3', 2],
+          ['Metodología y técnicas de inr', 2],
+          ['Morfofisiología 1', 6],
+          ['Salud familiar 1', 3]
+        ]
+      },
+      {
+        semestre: '4to Semestre',
+        materias: [
+          ['General English 4', 2],
+          ['Genética e inmunología', 2],
+          ['Microbiología', 3],
+          ['Morfofisiología 2', 6],
+          ['Salud familiar 2', 3],
+          ['Seminario taller aplicado 1', 2],
+          ['Semiología', 3]
+        ]
+      },
+      {
+        semestre: '5to Semestre',
+        materias: [
+          ['Electiva profesional 1', 2],
+          ['Farmacología', 3],
+          ['Fisiopatología', 3],
+          ['General English 5', 2],
+          ['Procedimientos básicos en enfermería', 6],
+          ['Salud familiar 3', 3],
+          ['Seminario taller aplicado 2', 2]
+        ]
+      },
+      {
+        semestre: '6to Semestre',
+        materias: [
+          ['Electiva de formación integral 3', 1],
+          ['Electiva profesional 2', 2],
+          ['Enfermería materno infantil', 9],
+          ['Legislación en salud', 3],
+          ['Salud ocupacional', 3],
+          ['Seminario - Taller aplicado 3', 3]
+        ]
+      },
+      {
+        semestre: '7mo Semestre',
+        materias: [
+          ['Electiva profesional 3', 2],
+          ['Enfermería médico quirúrgica 1', 14]
+        ]
+      },
+      {
+        semestre: '8vo Semestre',
+        materias: [
+          ['Administración en enfermería 1', 6],
+          ['Enfermería médico quirúrgica 2 y psiquiatría', 8]
+        ]
+      },
+      {
+        semestre: '9no Semestre',
+        materias: [
+          ['Administración en enfermería 2', 6],
+          ['Práctica profesional', 8]
+        ]
+      }
+    ];
+
+    let totalCreditos = 0;
+
+    const contenedor = document.getElementById('malla');
+    const total = document.getElementById('total');
+
+    function actualizarCreditos() {
+      const checkboxes = document.querySelectorAll('input[type=checkbox]');
+      totalCreditos = 0;
+      checkboxes.forEach(cb => {
+        if (cb.checked) totalCreditos += parseInt(cb.dataset.creditos);
+      });
+      total.textContent = `Créditos completados: ${totalCreditos}`;
+    }
+
+    data.forEach(sem => {
+      const div = document.createElement('div');
+      div.className = 'semestre';
+      const h3 = document.createElement('h3');
+      h3.textContent = sem.semestre;
+      div.appendChild(h3);
+      sem.materias.forEach(([nombre, creditos]) => {
+        const label = document.createElement('label');
+        label.className = 'materia';
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        input.dataset.creditos = creditos;
+        input.onchange = actualizarCreditos;
+        label.appendChild(input);
+        label.append(`${nombre} (${creditos} créditos)`);
+        div.appendChild(label);
+      });
+      contenedor.appendChild(div);
+    });
+  </script>
+</body>
+</html>
