@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -57,118 +58,97 @@
       display: inline-block;
       border: 2px solid #cc66cc;
     }
+    #reset {
+      margin-top: 15px;
+      background-color: #f8c1f0;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #4a004a;
+    }
   </style>
 </head>
 <body>
   <h1>Malla Curricular - Enfermería 💖🩺</h1>
   <div class="contenedor" id="malla"></div>
-  <div id="total">Créditos completados: 0</div>
+  <div id="total">Créditos completados: 0</div><br>
+  <button id="reset" onclick="reiniciar()">🔄 Reiniciar malla</button>
 
   <script>
     const data = [
-      {
-        semestre: '1er Semestre',
-        materias: [
-          ['Biología 1', 3],
-          ['Competencias comunicativas 1', 4],
-          ['Competencias lógico matemáticas', 3],
-          ['General English 1', 2],
-          ['Introducción a la carrera', 1],
-          ['Región y contexto Caribe', 2],
-          ['Salud y desarrollo humano', 2]
-        ]
-      },
-      {
-        semestre: '2do Semestre',
-        materias: [
-          ['Biofísica', 3],
-          ['Biología 2', 3],
-          ['Bioquímica', 4],
-          ['General English 2', 2],
-          ['Seminario de enfermería', 3],
-          ['Teoría y filosofía del conocimiento', 2]
-        ]
-      },
-      {
-        semestre: '3er Semestre',
-        materias: [
-          ['Enfermería en salud mental', 6],
-          ['General English 3', 2],
-          ['Metodología y técnicas de inr', 2],
-          ['Morfofisiología 1', 6],
-          ['Salud familiar 1', 3]
-        ]
-      },
-      {
-        semestre: '4to Semestre',
-        materias: [
-          ['General English 4', 2],
-          ['Genética e inmunología', 2],
-          ['Microbiología', 3],
-          ['Morfofisiología 2', 6],
-          ['Salud familiar 2', 3],
-          ['Seminario taller aplicado 1', 2],
-          ['Semiología', 3]
-        ]
-      },
-      {
-        semestre: '5to Semestre',
-        materias: [
-          ['Electiva profesional 1', 2],
-          ['Farmacología', 3],
-          ['Fisiopatología', 3],
-          ['General English 5', 2],
-          ['Procedimientos básicos en enfermería', 6],
-          ['Salud familiar 3', 3],
-          ['Seminario taller aplicado 2', 2]
-        ]
-      },
-      {
-        semestre: '6to Semestre',
-        materias: [
-          ['Electiva de formación integral 3', 1],
-          ['Electiva profesional 2', 2],
-          ['Enfermería materno infantil', 9],
-          ['Legislación en salud', 3],
-          ['Salud ocupacional', 3],
-          ['Seminario - Taller aplicado 3', 3]
-        ]
-      },
-      {
-        semestre: '7mo Semestre',
-        materias: [
-          ['Electiva profesional 3', 2],
-          ['Enfermería médico quirúrgica 1', 14]
-        ]
-      },
-      {
-        semestre: '8vo Semestre',
-        materias: [
-          ['Administración en enfermería 1', 6],
-          ['Enfermería médico quirúrgica 2 y psiquiatría', 8]
-        ]
-      },
-      {
-        semestre: '9no Semestre',
-        materias: [
-          ['Administración en enfermería 2', 6],
-          ['Práctica profesional', 8]
-        ]
-      }
+      { semestre: '1er Semestre', materias: [
+        ['Biología 1', 3], ['Competencias comunicativas 1', 4], ['Competencias lógico matemáticas', 3],
+        ['General English 1', 2], ['Introducción a la carrera', 1], ['Región y contexto Caribe', 2],
+        ['Salud y desarrollo humano', 2]
+      ]},
+      { semestre: '2do Semestre', materias: [
+        ['Biofísica', 3], ['Biología 2', 3], ['Bioquímica', 4], ['General English 2', 2],
+        ['Seminario de enfermería', 3], ['Teoría y filosofía del conocimiento', 2]
+      ]},
+      { semestre: '3er Semestre', materias: [
+        ['Enfermería en salud mental', 6], ['General English 3', 2], ['Metodología y técnicas de inr', 2],
+        ['Morfofisiología 1', 6], ['Salud familiar 1', 3]
+      ]},
+      { semestre: '4to Semestre', materias: [
+        ['General English 4', 2], ['Genética e inmunología', 2], ['Microbiología', 3],
+        ['Morfofisiología 2', 6], ['Salud familiar 2', 3], ['Seminario taller aplicado 1', 2], ['Semiología', 3]
+      ]},
+      { semestre: '5to Semestre', materias: [
+        ['Electiva profesional 1', 2], ['Farmacología', 3], ['Fisiopatología', 3],
+        ['General English 5', 2], ['Procedimientos básicos en enfermería', 6],
+        ['Salud familiar 3', 3], ['Seminario taller aplicado 2', 2]
+      ]},
+      { semestre: '6to Semestre', materias: [
+        ['Electiva de formación integral 3', 1], ['Electiva profesional 2', 2],
+        ['Enfermería materno infantil', 9], ['Legislación en salud', 3], ['Salud ocupacional', 3],
+        ['Seminario - Taller aplicado 3', 3]
+      ]},
+      { semestre: '7mo Semestre', materias: [
+        ['Electiva profesional 3', 2], ['Enfermería médico quirúrgica 1', 14]
+      ]},
+      { semestre: '8vo Semestre', materias: [
+        ['Administración en enfermería 1', 6], ['Enfermería médico quirúrgica 2 y psiquiatría', 8]
+      ]},
+      { semestre: '9no Semestre', materias: [
+        ['Administración en enfermería 2', 6], ['Práctica profesional', 8]
+      ]}
     ];
-
-    let totalCreditos = 0;
 
     const contenedor = document.getElementById('malla');
     const total = document.getElementById('total');
 
     function actualizarCreditos() {
-      const checkboxes = document.querySelectorAll('input[type=checkbox]');
-      totalCreditos = 0;
-      checkboxes.forEach(cb => {
-        if (cb.checked) totalCreditos += parseInt(cb.dataset.creditos);
+      let totalCreditos = 0;
+      document.querySelectorAll('input[type=checkbox]').forEach(cb => {
+        if (cb.checked) {
+          totalCreditos += parseInt(cb.dataset.creditos);
+        }
       });
       total.textContent = `Créditos completados: ${totalCreditos}`;
+    }
+
+    function guardarEstado() {
+      const estados = [];
+      document.querySelectorAll('input[type=checkbox]').forEach(cb => {
+        estados.push(cb.checked);
+      });
+      localStorage.setItem('mallaEnfermeriaEstado', JSON.stringify(estados));
+    }
+
+    function cargarEstado() {
+      const estados = JSON.parse(localStorage.getItem('mallaEnfermeriaEstado') || '[]');
+      document.querySelectorAll('input[type=checkbox]').forEach((cb, i) => {
+        cb.checked = estados[i] || false;
+      });
+      actualizarCreditos();
+    }
+
+    function reiniciar() {
+      localStorage.removeItem('mallaEnfermeriaEstado');
+      document.querySelectorAll('input[type=checkbox]').forEach(cb => cb.checked = false);
+      actualizarCreditos();
     }
 
     data.forEach(sem => {
@@ -183,13 +163,18 @@
         const input = document.createElement('input');
         input.type = 'checkbox';
         input.dataset.creditos = creditos;
-        input.onchange = actualizarCreditos;
+        input.onchange = () => {
+          actualizarCreditos();
+          guardarEstado();
+        };
         label.appendChild(input);
         label.append(`${nombre} (${creditos} créditos)`);
         div.appendChild(label);
       });
       contenedor.appendChild(div);
     });
+
+    cargarEstado();
   </script>
 </body>
 </html>
